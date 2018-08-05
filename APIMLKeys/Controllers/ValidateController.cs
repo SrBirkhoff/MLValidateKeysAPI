@@ -29,16 +29,18 @@ namespace APIMLKeys.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, keys);
                 } else if (RequestCode == 400)
                 {
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized, keys);
+                    //return Request.CreateResponse(HttpStatusCode.Unauthorized, keys);
+                    return Request.CreateResponse(HttpStatusCode.NonAuthoritativeInformation, keys);
                 }
                 else {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, keys);
+                   return Request.CreateResponse(HttpStatusCode.InternalServerError, keys);
                 }
             }
             else
             {
                 keys.Add(new Keys("","", "Valores de clientID e/ou clientSecret vázios ou inválidos, por favor informe corretamente os dados no formato URL/api/Validate?clientID=IDENTIFICACAO&clientSecret=CHAVE"));
-                return Request.CreateResponse(HttpStatusCode.BadRequest, keys);
+                //return Request.CreateResponse(HttpStatusCode.BadRequest, keys);
+                return Request.CreateResponse(HttpStatusCode.PartialContent, keys);
             }
         }
 
